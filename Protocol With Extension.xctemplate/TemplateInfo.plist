@@ -5,9 +5,9 @@
 	<key>Kind</key>
 	<string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
 	<key>Description</key>
-	<string>Create UIView and its class file.</string>
+	<string>Singleton.</string>
 	<key>Summary</key>
-	<string>Setup a custom view with its associated class</string>
+	<string>Setup a Singleton</string>
 	<key>SortOrder</key>
 	<string>31</string>
 	<key>AllowedTypes</key>
@@ -28,7 +28,7 @@
 			<key>Name</key>
 			<string>Class:</string>
 			<key>Description</key>
-			<string>The name of the subview to create</string>
+			<string>The name of the class to create</string>
 			<key>Type</key>
 			<string>text</string>
 			<key>NotPersisted</key>
