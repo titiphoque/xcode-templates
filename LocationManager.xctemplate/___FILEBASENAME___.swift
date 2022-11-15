@@ -10,8 +10,8 @@ import Combine
 import Foundation
 import CoreLocation
 
-class LocationManager: NSObject {
-    static let shared = LocationManager()
+class ___FILEBASENAME___: NSObject {
+    static let shared = ___FILEBASENAME___()
     
     private var cancellables = Set<AnyCancellable>()
     private let locationManager = CLLocationManager()
@@ -119,7 +119,7 @@ class LocationManager: NSObject {
     func startMonitoringSignificantLocationChanges() {
         guard isMonitoringSignificantLocationChanges == false else { return }
         
-        debugPrint("🚙 Start monitoring significant location changes")
+        debugPrint("[___FILEBASENAME___] 🚙 Start monitoring significant location changes")
         locationManager.startMonitoringSignificantLocationChanges()
         isMonitoringSignificantLocationChanges = true
     }
@@ -127,7 +127,7 @@ class LocationManager: NSObject {
     func stopMonitoringSignificantLocationChanges() {
         guard isMonitoringSignificantLocationChanges == true else { return }
         
-        debugPrint("🚙 Stop monitoring significant location changes")
+        debugPrint("[___FILEBASENAME___] 🚙 Stop monitoring significant location changes")
         locationManager.stopMonitoringSignificantLocationChanges()
         isMonitoringSignificantLocationChanges = false
     }
@@ -135,7 +135,7 @@ class LocationManager: NSObject {
 
 // MARK: - CLLocationManagerDelegate
 
-extension LocationManager: CLLocationManagerDelegate {
+extension ___FILEBASENAME___: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         currentAuthorizationStatus = status
@@ -147,6 +147,6 @@ extension LocationManager: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        debugPrint("❌ Location manager failed to get location: \(error)")
+        debugPrint("[___FILEBASENAME___] ❌ Location manager failed to get location: \(error)")
     }
 }

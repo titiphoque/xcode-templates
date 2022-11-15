@@ -5,9 +5,9 @@
 	<key>Kind</key>
 	<string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
 	<key>Description</key>
-	<string>Singleton.</string>
+	<string>Setup a class that manage user location</string>
 	<key>Summary</key>
-	<string>Setup a Singleton</string>
+	<string>Setup a class that manage user location</string>
 	<key>SortOrder</key>
 	<string>31</string>
 	<key>AllowedTypes</key>
