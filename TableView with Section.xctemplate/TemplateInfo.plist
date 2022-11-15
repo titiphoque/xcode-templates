@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Kind</key>
+	<string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
+	<key>Description</key>
+	<string>Setup a UITableView with Section Header.</string>
+	<key>Summary</key>
+	<string>Setup a UITableView with Section Header.</string>
+	<key>SortOrder</key>
+	<string>30</string>
+	<key>AllowedTypes</key>
+	<array>
+		<string>public.swift-source</string>
+	</array>
+	<key>DefaultCompletionName</key>
+	<string>File</string>
+	<key>MainTemplateFile</key>
+	<string>___FILEBASENAME___ViewController.swift</string>
+	<key>Options</key>
+	<array>
+		<dict>
+			<key>Identifier</key>
+			<string>productName</string>
+			<key>Required</key>
+			<true/>
+			<key>Name</key>
+			<string>Controller name (without ViewController):</string>
+			<key>Description</key>
+			<string>Name of feature (ex: Events)</string>
+			<key>Type</key>
+			<string>text</string>
+			<key>NotPersisted</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+			<string>SectionType</string>
+			<key>Name</key>
+			<string>Section Type</string>
+			<key>Description</key>
+			<string>Type of the Section</string>
+			<key>Type</key>
+			<string>popup</string>
+			<key>Default</key>
+			<string>Class</string>
+			<key>Values</key>
+			<array>
+				<string>Class</string>
+				<string>Enum</string>
+			</array>
+			<key>NotPersisted</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+			<string>CellIdentifiable</string>
+			<key>Name</key>
+			<string>Add CellIdentifiable protocol</string>
+			<key>Description</key>
+			<string>Add CellIdentifiable protocol</string>
+			<key>Type</key>
+			<string>checkbox</string>
+			<key>Default</key>
+			<string>false</string>
+			<key>NotPersisted</key>
+			<false/>
+		</dict>
+	</array>
+</dict>
+</plist>
