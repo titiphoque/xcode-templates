@@ -7,7 +7,7 @@
 	<key>Description</key>
 	<string>Realm Model skeleton.</string>
 	<key>Summary</key>
-	<string>Realm Model skeleton with ObjectMapper parse method and Alamofire Router skeleton</string>
+	<string>Realm Model skeleton with ObjectMapper parse method</string>
 	<key>SortOrder</key>
 	<string>30</string>
 	<key>AllowedTypes</key>
