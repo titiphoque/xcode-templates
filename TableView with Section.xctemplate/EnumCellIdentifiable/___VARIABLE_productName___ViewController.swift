@@ -9,8 +9,8 @@
 import UIKit
 import Combine
 
-enum FeatureSection: Hashable {
-    case objects(Int, [FeatureCellItem])
+enum ___VARIABLE_productName___Section: Hashable {
+    case objects(Int, [___VARIABLE_productName___CellItem])
     
     var id: String {
         switch self {
@@ -25,12 +25,12 @@ enum FeatureSection: Hashable {
         hasher.combine(id)
     }
     
-    static func ==(lhs: FeatureSection, rhs: FeatureSection) -> Bool {
+    static func ==(lhs: ___VARIABLE_productName___Section, rhs: ___VARIABLE_productName___Section) -> Bool {
         lhs.id == rhs.id
     }
 }
 
-class FeatureCellItem: Hashable {
+class ___VARIABLE_productName___CellItem: Hashable {
     let uid: Int
     let value: Int
     
@@ -43,7 +43,7 @@ class FeatureCellItem: Hashable {
         hasher.combine(uid)
     }
     
-    static func ==(lhs: FeatureCellItem, rhs: FeatureCellItem) -> Bool {
+    static func ==(lhs: ___VARIABLE_productName___CellItem, rhs: ___VARIABLE_productName___CellItem) -> Bool {
         return lhs.uid == rhs.uid
     }
 }
@@ -52,7 +52,7 @@ class ___VARIABLE_productName___ViewController: UIViewController {
     
     enum State {
         case loading
-        case `default`([FeatureSection])
+        case `default`([___VARIABLE_productName___Section])
         case error(Error)
     }
 
@@ -91,8 +91,8 @@ class ___VARIABLE_productName___ViewController: UIViewController {
     private var cancellables = Set<AnyCancellable>()
     private lazy var viewModel = ___VARIABLE_productName___ViewModel()
     
-    private lazy var dataSource: UITableViewDiffableDataSource<FeatureSection, FeatureCellItem> = {
-        let dataSource = UITableViewDiffableDataSource<FeatureSection, FeatureCellItem>(tableView: tableView) { tableView, indexPath, item in
+    private lazy var dataSource: UITableViewDiffableDataSource<___VARIABLE_productName___Section, ___VARIABLE_productName___CellItem> = {
+        let dataSource = UITableViewDiffableDataSource<___VARIABLE_productName___Section, ___VARIABLE_productName___CellItem>(tableView: tableView) { tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withIdentifier: ___VARIABLE_productName___TableViewCell.identifier, for: indexPath) as! ___VARIABLE_productName___TableViewCell
             cell.configure(with: item)
             return cell
@@ -101,11 +101,11 @@ class ___VARIABLE_productName___ViewController: UIViewController {
         
         return dataSource
     }()
-    @Published private var sections = [FeatureSection]()
+    @Published private var sections = [___VARIABLE_productName___Section]()
     
     // MARK: - Life cycle
     
-    var cellItems = [FeatureCellItem]()
+    var cellItems = [___VARIABLE_productName___CellItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,7 +143,7 @@ class ___VARIABLE_productName___ViewController: UIViewController {
             .sink { [weak self] newSections in
                 guard let self = self else { return }
                 
-                var snapshot = NSDiffableDataSourceSnapshot<FeatureSection, FeatureCellItem>()
+                var snapshot = NSDiffableDataSourceSnapshot<___VARIABLE_productName___Section, ___VARIABLE_productName___CellItem>()
                 snapshot.appendSections(newSections)
                 newSections.forEach { section in
                     switch section {
@@ -167,7 +167,7 @@ class ___VARIABLE_productName___ViewController: UIViewController {
         transitionView(to: errorView)
     }
     
-    private func setupStateDefault(sections: [FeatureSection]) {
+    private func setupStateDefault(sections: [___VARIABLE_productName___Section]) {
         debugPrint("[State] Setup state default")
         self.sections = sections.sorted(by: { lhs, rhs in
             switch (lhs, rhs) {

@@ -10,7 +10,7 @@ import UIKit
 
 class ___VARIABLE_productName___TableHeaderView: UITableViewHeaderFooterView, CellIdentifiable {
     
-    typealias Item = FeatureSection
+    typealias Item = ___VARIABLE_productName___Section
     
     static let height: CGFloat = 45
     

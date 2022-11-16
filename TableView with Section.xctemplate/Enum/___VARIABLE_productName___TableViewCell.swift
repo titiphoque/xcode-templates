@@ -10,7 +10,7 @@ import UIKit
 
 class ___VARIABLE_productName___TableViewCell: UITableViewCell, CellIdentifiable {
 
-    typealias Item = FeatureCellItem
+    typealias Item = ___VARIABLE_productName___CellItem
     
     // MARK: - IBOutlets
     

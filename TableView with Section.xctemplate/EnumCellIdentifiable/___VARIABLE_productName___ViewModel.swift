@@ -46,12 +46,12 @@ class ___VARIABLE_productName___ViewModel {
         debugPrint("Will retreive data from database or other local sources")
         
         // To be replace. Ex: let objects = realmManager.getEvents()
-        func getObjects() -> [FeatureCellItem] {
+        func getObjects() -> [___VARIABLE_productName___CellItem] {
             callCount += 1
-            let objects: [FeatureCellItem] = {
-                var arr = [FeatureCellItem]()
+            let objects: [___VARIABLE_productName___CellItem] = {
+                var arr = [___VARIABLE_productName___CellItem]()
                 for i in 0...(10 * callCount) {
-                    arr.append(FeatureCellItem(uid: i, value: i % 4))
+                    arr.append(___VARIABLE_productName___CellItem(uid: i, value: i % 4))
                 }
                 return arr
             }()
@@ -63,9 +63,9 @@ class ___VARIABLE_productName___ViewModel {
             obj.value
         }
         
-        var sections = [FeatureSection]()
+        var sections = [___VARIABLE_productName___Section]()
         for (sectionValue, sectionItems) in groupedItems {
-            sections.append(FeatureSection.objects(sectionValue, sectionItems))
+            sections.append(___VARIABLE_productName___Section.objects(sectionValue, sectionItems))
         }
         
         state = .default(sections)
