@@ -46,7 +46,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="dateLabel" destination="CR9-iB-o58" id="UOr-LF-XsS"/>
+                <outlet property="sampleLabel" destination="CR9-iB-o58" id="UOr-LF-XsS"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="128.90625"/>
         </tableViewCell>

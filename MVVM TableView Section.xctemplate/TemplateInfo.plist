@@ -8,8 +8,6 @@
 	<string>Setup a UITableView with Section Header.</string>
 	<key>Summary</key>
 	<string>Setup a UITableView with Section Header.</string>
-	<key>SortOrder</key>
-	<string>30</string>
 	<key>AllowedTypes</key>
 	<array>
 		<string>public.swift-source</string>

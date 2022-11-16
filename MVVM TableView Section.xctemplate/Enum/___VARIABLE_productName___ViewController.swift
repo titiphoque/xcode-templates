@@ -15,9 +15,7 @@ enum ___VARIABLE_productName___Section: Hashable {
     var id: String {
         switch self {
         case .objects(_, let objects):
-            return objects
-                .compactMap { "\($0.uid)" }
-                .joined(separator: "_")
+            return "\(value)"
         }
     }
     

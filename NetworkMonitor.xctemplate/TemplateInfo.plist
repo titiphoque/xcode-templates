@@ -8,8 +8,6 @@
 	<string>Create a class that monitor network path</string>
 	<key>Summary</key>
 	<string>Create a class that monitor network path</string>
-	<key>SortOrder</key>
-	<string>31</string>
 	<key>AllowedTypes</key>
 	<array>
 		<string>public.swift-source</string>

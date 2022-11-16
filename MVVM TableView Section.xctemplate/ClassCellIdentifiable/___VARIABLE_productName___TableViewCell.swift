@@ -14,7 +14,7 @@ class ___VARIABLE_productName___TableViewCell: UITableViewCell, CellIdentifiable
     
     // MARK: - IBOutlets
     
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var sampleLabel: UILabel!
     
     // MARK: - Life cycle
     
@@ -26,6 +26,6 @@ class ___VARIABLE_productName___TableViewCell: UITableViewCell, CellIdentifiable
     // MARK: - Configure
     
     func configure(with item: Item) {
-        dateLabel.text = "\(item.value) - \(item.uid)"
+        sampleLabel.text = "\(item.value) - \(item.uid)"
     }
 }

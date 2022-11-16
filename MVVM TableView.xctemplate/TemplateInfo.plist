@@ -5,17 +5,17 @@
 	<key>Kind</key>
 	<string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
 	<key>Description</key>
-	<string>Create UIView and its class file.</string>
+	<string>Setup a MVMM UITableView.</string>
 	<key>Summary</key>
-	<string>Setup a custom view with its associated class</string>
+	<string>Setup a MVMM UITableView.</string>
 	<key>AllowedTypes</key>
 	<array>
 		<string>public.swift-source</string>
 	</array>
 	<key>DefaultCompletionName</key>
-	<string>MyClass</string>
+	<string>File</string>
 	<key>MainTemplateFile</key>
-	<string>___FILEBASENAME___.swift</string>
+	<string>___FILEBASENAME___ViewController.swift</string>
 	<key>Options</key>
 	<array>
 		<dict>
@@ -24,13 +24,27 @@
 			<key>Required</key>
 			<true/>
 			<key>Name</key>
-			<string>Class:</string>
+			<string>Controller name (without ViewController):</string>
 			<key>Description</key>
-			<string>The name of the subview to create</string>
+			<string>Name of feature (ex: Events)</string>
 			<key>Type</key>
 			<string>text</string>
 			<key>NotPersisted</key>
 			<true/>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+			<string>CellIdentifiable</string>
+			<key>Name</key>
+			<string>Add CellIdentifiable protocol</string>
+			<key>Description</key>
+			<string>Add CellIdentifiable protocol</string>
+			<key>Type</key>
+			<string>checkbox</string>
+			<key>Default</key>
+			<string>false</string>
+			<key>NotPersisted</key>
+			<false/>
 		</dict>
 	</array>
 </dict>

@@ -9,28 +9,6 @@
 import UIKit
 import Combine
 
-class ___VARIABLE_productName___Section: Hashable {
-    let value: Int
-    let items: [___VARIABLE_productName___CellItem]
-    
-    init(value: Int, items: [___VARIABLE_productName___CellItem]) {
-        self.value = value
-        self.items = items
-    }
-    
-    var id: String {
-        "\(value)"
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func ==(lhs: ___VARIABLE_productName___Section, rhs: ___VARIABLE_productName___Section) -> Bool {
-        lhs.id == rhs.id
-    }
-}
-
 class ___VARIABLE_productName___CellItem: Hashable {
     let uid: Int
     let value: Int
@@ -53,7 +31,7 @@ class ___VARIABLE_productName___ViewController: UIViewController {
     
     enum State {
         case loading
-        case `default`([___VARIABLE_productName___Section])
+        case `default`([___VARIABLE_productName___CellItem])
         case error(Error)
     }
 
@@ -67,19 +45,10 @@ class ___VARIABLE_productName___ViewController: UIViewController {
         didSet {
             tableView.register(___VARIABLE_productName___TableViewCell.nib,
                                forCellReuseIdentifier: ___VARIABLE_productName___TableViewCell.identifier)
-            tableView.register(___VARIABLE_productName___TableHeaderView.nib,
-                               forHeaderFooterViewReuseIdentifier: ___VARIABLE_productName___TableHeaderView.identifier)
             
             tableView.backgroundColor = .clear
             tableView.dataSource = dataSource
             tableView.delegate = self
-            
-            tableView.rowHeight = UITableView.automaticDimension
-            tableView.estimatedRowHeight = 40
-            
-            if #available(iOS 15.0, *) {
-                tableView.sectionHeaderTopPadding = 0
-            }
             
             let refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(refreshControllerTriggered), for: .valueChanged)
@@ -92,25 +61,26 @@ class ___VARIABLE_productName___ViewController: UIViewController {
     private var cancellables = Set<AnyCancellable>()
     private lazy var viewModel = ___VARIABLE_productName___ViewModel()
     
-    private lazy var dataSource: UITableViewDiffableDataSource<___VARIABLE_productName___Section, ___VARIABLE_productName___CellItem> = {
-        let dataSource = UITableViewDiffableDataSource<___VARIABLE_productName___Section, ___VARIABLE_productName___CellItem>(tableView: tableView) { tableView, indexPath, item in
+    private lazy var dataSource: UITableViewDiffableDataSource<Int, ___VARIABLE_productName___CellItem> = {
+        let dataSource = UITableViewDiffableDataSource<Int, ___VARIABLE_productName___CellItem>(tableView: tableView) { tableView, indexPath, itemIdentifier in
             let cell = tableView.dequeueReusableCell(withIdentifier: ___VARIABLE_productName___TableViewCell.identifier, for: indexPath) as! ___VARIABLE_productName___TableViewCell
-            cell.configure(with: item)
+            cell.configure(with: itemIdentifier)
             return cell
         }
         dataSource.defaultRowAnimation = .fade
         
         return dataSource
     }()
-    @Published private var sections = [___VARIABLE_productName___Section]()
+    @Published private var items = [___VARIABLE_productName___CellItem]()
     
     // MARK: - Life cycle
+    
+    var cellItems = [___VARIABLE_productName___CellItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         registerToViewModelState()
-        
         viewModel.getData()
     }
     
@@ -125,8 +95,8 @@ class ___VARIABLE_productName___ViewController: UIViewController {
                 case .loading:
                     self.setupStateLoading()
                     
-                case .default(let sections):
-                    self.setupStateDefault(sections: sections)
+                case .default(let items):
+                    self.setupStateDefault(items: items)
                     
                 case .error(let error):
                     self.setupStateError(error: error)
@@ -137,16 +107,14 @@ class ___VARIABLE_productName___ViewController: UIViewController {
             .store(in: &cancellables)
         
         
-        $sections
+        $items
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] newSections in
+            .sink { [weak self] items in
                 guard let self = self else { return }
                 
-                var snapshot = NSDiffableDataSourceSnapshot<___VARIABLE_productName___Section, ___VARIABLE_productName___CellItem>()
-                snapshot.appendSections(newSections)
-                newSections.forEach { section in
-                    snapshot.appendItems(section.items, toSection: section)
-                }
+                var snapshot = NSDiffableDataSourceSnapshot<Int, ___VARIABLE_productName___CellItem>()
+                snapshot.appendSections([0])
+                snapshot.appendItems(items, toSection: 0)
                 
                 self.dataSource.apply(snapshot, animatingDifferences: true)
             }
@@ -163,9 +131,9 @@ class ___VARIABLE_productName___ViewController: UIViewController {
         transitionView(to: errorView)
     }
     
-    private func setupStateDefault(sections: [___VARIABLE_productName___Section]) {
+    private func setupStateDefault(items: [___VARIABLE_productName___CellItem]) {
         debugPrint("[State] Setup state default")
-        self.sections = sections.sorted(by: { lhs, rhs in
+        self.items = items.sorted(by: { lhs, rhs in
             lhs.value < rhs.value
         })
         
@@ -217,24 +185,7 @@ extension ___VARIABLE_productName___ViewController: UITableViewDelegate {
     // MARK: - Did select row
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = sections[indexPath.section]
-        let item = section.items[indexPath.row]
-        
+        let item = items[indexPath.row]
         debugPrint("Did select item with uid: \(item.uid)")
-    }
-    
-    // MARK: - Header
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ___VARIABLE_productName___TableHeaderView.identifier) as! ___VARIABLE_productName___TableHeaderView
-        
-        let sectionItem = sections[section]
-        headerView.configure(with: sectionItem)
-        
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        ___VARIABLE_productName___TableHeaderView.height
     }
 }

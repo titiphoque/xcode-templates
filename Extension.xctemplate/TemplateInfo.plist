@@ -8,8 +8,6 @@
 	<string>Create an extension to specified classname. The `extension` suffix will be automatically added to filename.</string>
 	<key>Summary</key>
 	<string>Create an extension of the specified element</string>
-	<key>SortOrder</key>
-	<string>31</string>
 	<key>AllowedTypes</key>
 	<array>
 		<string>public.swift-source</string>

@@ -19,9 +19,7 @@ class ___VARIABLE_productName___Section: Hashable {
     }
     
     var id: String {
-        items
-            .compactMap { "\($0.uid)" }
-            .joined(separator: "_")
+        "\(value)"
     }
     
     func hash(into hasher: inout Hasher) {
