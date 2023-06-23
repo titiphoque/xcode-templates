@@ -49,10 +49,11 @@ class ___VARIABLE_productName___ {
     }
     
     func loadValues() {
-        // Fetch and Activate are async. Activate may finished before Fetch.
+        // Fetch and Activate are async.
         loadDefaultValues()
-        fetchRemoteValues()
-        activateValues()
+        fetchRemoteValues() {
+            activateValues()
+        }
     }
     
     // MARK: - Data loading
@@ -66,7 +67,7 @@ class ___VARIABLE_productName___ {
         remoteConfig.setDefaults(defaultValues as? [String: NSObject])
     }
     
-    private func fetchRemoteValues() {
+    private func fetchRemoteValues(completionHandler: () -> Void) {
         remoteConfig.fetch { status, error in
             switch status {
             case .success: debugPrint("[___VARIABLE_productName___] Fetch success")
@@ -75,6 +76,7 @@ class ___VARIABLE_productName___ {
             case .throttled: debugPrint("[___VARIABLE_productName___] Fetch: throtlled")
             @unknown default: debugPrint("[___VARIABLE_productName___] Fetch: @unknown")
             }
+            completionHandler()
         }
     }
     
